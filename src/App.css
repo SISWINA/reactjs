@@ -1,38 +1,570 @@
-.App {
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+
+/*LOGIN*/
+/* Existing styles for login container */
+.loginbody {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to right, #3498db, #8e44ad);
+  padding: 20px;
+}
+
+.loginbody .main {
+  width: 100%;
+  max-width: 400px;
+  padding: 30px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 15px;
+  transition: transform 0.3s ease;
+}
+
+.loginbody .main:hover {
+  transform: translateY(-10px);
+}
+
+.loginbody .block {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.loginbody .signup {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.loginbody h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 36px;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: bold;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.loginbody h4 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  color: #34495e;
+  margin-bottom: 10px;
+  text-align: left;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.loginbody input[type="text"], .loginbody input[type="password"] {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  transition: border-color 0.3s ease;
+}
+
+.loginbody input[type="text"]:focus, .loginbody input[type="password"]:focus {
+  border-color: #3498db;
+  outline: none;
+}
+
+.loginbody button {
+  width: 100%;
+  padding: 15px;
+  background-color: #3498db;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 18px;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.loginbody button:hover {
+  background-color: #2980b9;
+  transform: translateY(-5px);
+}
+
+.loginbody h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: #2c3e50;
+}
+
+.loginbody h3:hover {
+  text-decoration: underline;
+  color: #3498db;
+}
+
+.loginbody a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.loginbody a:hover {
+  color: #8e44ad;
+}
+
+/*LOGIN END*/
+/* Sidenav Container */
+.sidenav {
+  width: 250px;
+  height: 100vh;
+  background-color: #372c50;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Welcome Text */
+.sidenav p {
+  font-family: 'Poppins', sans-serif;
+  color: #ecf0f1;
+  font-size: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+/* Image Styling */
+.sidenav img {
+  border-radius: 50%;
+  margin-bottom: 30px;
+}
+
+.sidenav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.sidenav ul li {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  color: #ecf0f1;
+  padding: 15px 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.sidenav ul li:hover {
+  background-color: #8534db;
+  color: #ffffff;
+}
+
+/* Link Styling */
+.sidenav a {
+  text-decoration: none;
+  width: 100%;
+  display: block;
+}
+
+.sidenav a p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 18px;
+  color: #ecf0f1;
+  margin-top: auto;
+  text-transform: uppercase;
+}
+
+.sidenav a p:hover {
+  color: #e74c3c;
+  transition: color 0.3s ease;
+}
+
+/* SIDE NAV ENDS */
+
+/* Dashboard starts */
+.dash {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; 
+  background: linear-gradient(to right, #c4fbff, #c2aff5); 
+  padding: 1rem; 
+}
+
+.products-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; 
+}
+
+.products-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.products-container {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.productdata {
+  background-color: #faf1ff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1 1 calc(33.333% - 1rem);
+  max-width: calc(33.333% - 1rem);
+  box-sizing: border-box;
+  margin-bottom: 1rem; 
+}
+
+.productdata img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.productdata p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: #2c3e50;
+  margin: 5px 0;
+}
+
+.productdata:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(107, 9, 194, 0.874);
+}
+
+.productdata a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.view-more-container {
+  text-align: right;
+}
+
+.view-more-container a {
+  text-decoration: none;
+  color: #000000; 
+  font-weight: bold; 
+}
+
+/* Carousel Styles */
+.custom-carousel .carousel-item img {
+  height: 500px; 
+  object-fit: cover; 
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 20%;
+  left: 5%;
+  text-align: center;
+  font-size: 1.5rem; 
+  font-weight: bold;
+  font-family: 'Dancing Script', cursive;
+  color: #fff;
+  width: 100%; 
+  max-width: 350px; 
+  box-sizing: border-box; 
+  padding: 20px; 
+}
+
+.products-header {
+  text-align: center;
+  font-size: 3rem; 
+  margin-top: 30px;
+  margin-bottom: 30px;
+  font-weight: bold;
+  font-family: 'Dancing Script', cursive; 
+  color: #230505; 
+}
+
+.products-section {
+  margin-bottom: 40px; 
+}
+
+.maindata {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; 
+  gap: 20px; 
+  padding: 20px;
+}
+
+.cart-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1000; 
+  display: flex;
+  align-items: center;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.cart-btn:hover {
+  background-color: #0056b3; 
+}
+
+.custom-carousel {
+  position: relative;
+}
+
+/*PRODUCTS*/
+.productdata {
+  background-color: #faf1ff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  flex: 1 1 calc(33.333% - 20px); 
+  max-width: calc(33.333% - 20px);
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+.productdata img {
+  max-width: 150px; 
+  height: auto;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+.productdata p {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  color: #2c3e50;
+  margin: 5px 0;
+}
+
+.productdata:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(107, 9, 194, 0.874);
+}
+
+.productdata a {
+  text-decoration: none;
+  color: inherit;
+}
+/*PRODUCTS*/
+
+/*singleitems*/
+
+.single-product {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px; 
+  padding: 20px; 
+  border-radius: 15px; 
+  background-color: #e2c7ff;
+  box-shadow: 0 6px 12px rgb(99, 10, 187); 
+  max-width: 1000px; 
+  margin: 0 auto; 
+}
+
+.product-image img {
+  width: 400px; 
+  height: auto;
+  border-radius: 10px;
+}
+
+.product-details {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+}
+
+.product-details h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.product-details p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.cart-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cart-controls button {
+  padding: 10px;
+  font-size: 18px;
+  background-color: #005f9e;
   color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+.cart-controls button:hover {
+  background-color: #003050;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cart-controls span {
+  font-size: 18px;
+}
+/*singleitems*/
+
+/*back to top*/
+
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #3c3c3c; /* Base button color */
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/*back to top end*/
+
+/*view more*/
+.maindata {
+  display: flex;
+}
+
+.sidenav-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh; 
+  width: 16.66%; 
+  background-color: #f8f9fa; 
+  padding: 20px;
+  z-index: 1000;
+  overflow-y: auto; 
+}
+
+.product-content {
+  margin-left: 16.66%; 
+  padding: 20px;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; 
+}
+
+.productdata {
+  width: 23%; 
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.productdata img {
+  max-width: 100%;
+  height: 200px;
+}
+
+.genre-header {
+  font-family: 'Dancing Script', cursive;
+  font-size: 40px; 
+  color: #470390; 
+  text-align: center; 
+  margin: 20px 0; 
+  width: 100%; 
+  position: relative;
+  z-index: 1; 
+}
+/*view more*/
+
+/* General layout for pages with fixed sidebar */
+.maindata {
+  display: flex;
+}
+
+.sidenav-fixed {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 16.6667%; 
+  background-color: #f8f9fa; 
+  overflow-y: auto; 
+  padding: 1rem; 
+}
+
+.content {
+  margin-left: 16.6667%; 
+  padding: 2rem; 
+}
+
+.about-content {
+  display: flex; 
+  align-items: center; 
+  font-family:cursive;
+  gap: 2rem; 
+}
+
+.about-image {
+  width: 50%; 
+  height: auto; 
+}
+
+.about-text {
+  max-width: 50%; 
+}
+
+.page-header {
+  font-size: 3rem; 
+  margin-bottom: 1rem; 
+}
+
+.page-text {
+  font-size: 1.5rem; 
+  line-height: 1.5; 
+  margin-bottom: 1rem; 
+  text-align: justify; 
+}
+
+.sidenav-fixed {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 16.6667%;  
+  height: 100vh; 
+  overflow-y: auto; 
+}
+
+.product-content {
+  margin-left: 16.6667%; 
+  padding: 20px; 
 }
