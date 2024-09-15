@@ -1,8 +1,7 @@
 import React from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import ScrollToTop from './Components/ScrollToTop'; 
-import Cart from './Components/Cart';
+import ScrollToTop from './Components/ScrollToTop';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
@@ -16,8 +15,8 @@ import SingleItem from './Pages/SingleItem';
 import SingleItem1 from './Pages/SingleItem1';
 import SingleItem2 from './Pages/SingleItem2';
 import SingleItem3 from './Pages/SingleItem3';
-import AboutUs from './Pages/AboutUs'; 
-import Feedback from './Pages/Feedback'; 
+import AboutUs from './Pages/AboutUs';
+import Feedback from './Pages/Feedback';
 
 function App() {
   return (
@@ -27,7 +26,6 @@ function App() {
         <ConditionalLayout>
           <Routes>
             <Route path='/reactjs' element={<Login />} />
-            <Route path="/cart" component={Cart} />
             <Route path='/signup' element={<Signup />} />
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path='/self' element={<Self />} />
@@ -49,13 +47,12 @@ function App() {
 
 function ConditionalLayout({ children }) {
   const location = useLocation();
-  const isAuthPage = location.pathname === '/reactjs' || location.pathname === '/Signup';
+  const isAuthPage = location.pathname === '/reactjs' || location.pathname === '/signup';
 
   return (
     <>
       {/* Render Sidenav and Cart on all pages except authentication pages */}
       {!isAuthPage && <Sidenav />}
-      {!isAuthPage && <Cart />}
       
       {/* Render the main content */}
       {children}

@@ -1,12 +1,14 @@
 import React from 'react'
 import Img from '../Assets/icon.png'
 import { Link } from 'react-router-dom'
+import CartIcon from './CartIcon'; 
 function Sidenav() {
   return (
     <div className='sidenav'>
         <p>WELCOME</p>
         <img src={Img} alt="" style={{width:'100px'}} />
         <ul>
+        <CartIcon />  
             <Link to='/dashboard'><li>Dashboard</li></Link>
             <Link to='/aboutus'><li>About Us</li></Link>
             <Link to='/feedback'><li>Feedback</li></Link>
