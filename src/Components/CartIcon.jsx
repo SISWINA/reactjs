@@ -5,11 +5,14 @@ import { Button } from 'react-bootstrap';
 
 const CartIcon = () => {
   return (
-    <Link to="/cart">
-      <Button variant="primary" className="cart-btn">
-        <FaShoppingCart size={24} />
-      </Button>
-    </Link>
+    <div className="cart-icon-wrapper">
+      <Link to="/cart">
+        <Button variant="primary" className="cart-btn">
+          <FaShoppingCart size={24} />
+          {/* Optionally display the cart item count here */}
+        </Button>
+      </Link>
+    </div>
   );
 };
 

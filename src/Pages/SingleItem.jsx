@@ -4,18 +4,23 @@ import { productsData } from '../Data/Products';
 import Sidenav from '../Components/Sidenav';
 import { Row, Col, Button } from 'react-bootstrap'; 
 
-function SingleItem() {
+const SingleItem = () => {
   const { id } = useParams(); 
   const product = productsData[id]; 
-  const [quantity, setQuantity] = useState(0); 
+  const [quantity, setQuantity] = useState(1); 
 
   if (!product) {
     return <h2>Product not found!</h2>; 
   }
 
+  const calculateDiscountedPrice = (price) => {
+    return (price - (price * 0.30)).toFixed(2); 
+  };
+
   const increaseQuantity = () => setQuantity(quantity + 1);
+
   const decreaseQuantity = () => {
-    if (quantity > 0) {
+    if (quantity > 1) {
       setQuantity(quantity - 1);
     }
   };
@@ -23,23 +28,23 @@ function SingleItem() {
   const addToCart = () => {
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     const newItem = {
-      id: product.id,
+      id: product.id,  
       name: product.ProductName,
-      price: product.Price,
-      quantity: quantity > 0 ? quantity : 1,  // Ensure at least 1 item is added
+      price: calculateDiscountedPrice(product.Price),
+      quantity: quantity > 0 ? quantity : 1,  
     };
-
-    // Check if the item already exists in the cart
+  
     const existingItemIndex = cartItems.findIndex(item => item.id === newItem.id);
     if (existingItemIndex !== -1) {
-      cartItems[existingItemIndex].quantity += newItem.quantity;  // Update quantity if item exists
+      cartItems[existingItemIndex].quantity += newItem.quantity;
     } else {
-      cartItems.push(newItem);  // Add new item
+      cartItems.push(newItem);
     }
-
-    localStorage.setItem('cartItems', JSON.stringify(cartItems)); // Save updated cart
+  
+    localStorage.setItem('cartItems', JSON.stringify(cartItems));
     alert(`${newItem.name} added to cart!`);
   };
+  
 
   return (
     <div className="container-fluid">
@@ -57,14 +62,25 @@ function SingleItem() {
             </div>
             <div className="product-details">
               <h2>{product.ProductName}</h2>
-              <p>Price: ₹{product.Price}</p>
-              <Button variant="success" onClick={addToCart}>Add to Cart</Button>
+              <p>
+                Price: 
+                <span style={{ textDecoration: 'line-through', color: 'red' }}> ₹{product.Price}</span>{' '}
+                <span style={{ color: 'green' }}> ₹{calculateDiscountedPrice(product.Price)}</span>
+              </p>
+              <div className="quantity-controls">
+                <Button variant="outline-secondary" onClick={decreaseQuantity}>-</Button>
+                <span>{quantity}</span>
+                <Button variant="outline-secondary" onClick={increaseQuantity}>+</Button>
+              </div>
+              <Button variant="success" onClick={addToCart} style={{ marginTop: '20px' }}>
+                Add to Cart
+              </Button>
             </div>
           </div>
         </Col>
       </Row>
     </div>
   );
-}
+};
 
 export default SingleItem;

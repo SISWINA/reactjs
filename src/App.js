@@ -6,6 +6,7 @@ import Login from './Components/Login';
 import Signup from './Components/Signup';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Dashboard from './Components/Dashboard';
+import CartPage from './Components/CartPage';
 import Sidenav from './Components/Sidenav';
 import Self from './Pages/Self';
 import Mystery from './Pages/Mystery';
@@ -28,6 +29,7 @@ function App() {
             <Route path='/reactjs' element={<Login />} />
             <Route path='/signup' element={<Signup />} />
             <Route path='/dashboard' element={<Dashboard />} />
+            <Route path="/cart" element={<CartPage />} />
             <Route path='/self' element={<Self />} />
             <Route path='/mystery' element={<Mystery />} />
             <Route path='/autobio' element={<Autobio />} />
