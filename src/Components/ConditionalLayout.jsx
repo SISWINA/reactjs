@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
-import Sidenav from './Sidenav'; // Import the Sidenav component
+import Sidenav from './Sidenav'; 
 
 function ConditionalLayout({ children }) {
   const location = useLocation();

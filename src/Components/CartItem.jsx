@@ -5,7 +5,7 @@ const CartItem = ({ item, onRemove, onQuantityChange }) => {
   const handleQuantityChange = (e) => {
     const newQuantity = parseInt(e.target.value, 10);
     if (newQuantity >= 0) {
-      onQuantityChange(item.id, newQuantity); // Call prop function with new quantity
+      onQuantityChange(item.id, newQuantity); 
     }
   };
 

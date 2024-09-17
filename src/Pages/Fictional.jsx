@@ -11,7 +11,7 @@ function Fictional() {
   };
 
   const getDiscountedPrice = (price) => {
-    return (price * 0.7).toFixed(2); // Apply 30% discount
+    return (price * 0.7).toFixed(2); 
   };
 
   return (

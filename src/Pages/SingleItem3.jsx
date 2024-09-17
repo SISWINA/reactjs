@@ -26,7 +26,7 @@ const SingleItem3 = () => {
     const newItem = {
       id: product.id,  
       name: product.ProductName,
-      price: product.price, // Use original price
+      price: product.price, 
       quantity: quantity > 0 ? quantity : 1,  
     };
   
@@ -42,7 +42,7 @@ const SingleItem3 = () => {
   };
 
   const getDiscountedPrice = (price) => {
-    return (price * 0.7).toFixed(2); // Apply 30% discount
+    return (price * 0.7).toFixed(2); 
   };
 
   return (

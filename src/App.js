@@ -18,7 +18,7 @@ import SingleItem2 from './Pages/SingleItem2';
 import SingleItem3 from './Pages/SingleItem3';
 import AboutUs from './Pages/AboutUs';
 import Feedback from './Pages/Feedback';
-import ConditionalLayout from './Components/ConditionalLayout'; // Import ConditionalLayout
+import ConditionalLayout from './Components/ConditionalLayout'; 
 
 function App() {
   return (

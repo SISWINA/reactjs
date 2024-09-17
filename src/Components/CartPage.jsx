@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
-import { FaArrowUp } from 'react-icons/fa'; // Import the arrow icon
-import { Link } from 'react-router-dom'; // Import Link
+import { FaArrowUp } from 'react-icons/fa';
+import { Link } from 'react-router-dom'; 
 import CartItem from './CartItem';
 
 const CartPage = () => {
@@ -10,7 +10,7 @@ const CartPage = () => {
   useEffect(() => {
     const fetchCartItems = () => {
       const items = JSON.parse(localStorage.getItem('cartItems')) || [];
-      setCartItems(items); // Set state with items from localStorage
+      setCartItems(items); 
     };
     fetchCartItems();
   }, []);
@@ -18,7 +18,7 @@ const CartPage = () => {
   const handleRemove = (id) => {
     const updatedCartItems = cartItems.filter(item => item.id !== id);
     setCartItems(updatedCartItems); 
-    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems)); // Update localStorage
+    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems)); 
   };
 
   const handleQuantityChange = (id, quantity) => {
@@ -26,14 +26,13 @@ const CartPage = () => {
       item.id === id ? { ...item, quantity: quantity } : item
     );
     setCartItems(updatedCartItems);
-    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems)); // Update localStorage
+    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems)); 
   };
 
   const handleCheckout = () => {
     alert("Checkout functionality not implemented yet.");
   };
 
-  // Function to scroll to the top of the page
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };

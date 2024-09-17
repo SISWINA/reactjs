@@ -17,7 +17,7 @@ const CheckoutPage = () => {
   useEffect(() => {
     const fetchCartItems = () => {
       const items = JSON.parse(localStorage.getItem('cartItems')) || [];
-      setCartItems(items); // Set state with items from localStorage
+      setCartItems(items); 
     };
     fetchCartItems();
   }, []);
@@ -31,11 +31,10 @@ const CheckoutPage = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate a network request
     setTimeout(() => {
       alert('Order placed successfully!');
-      localStorage.removeItem('cartItems'); // Clear cart
-      navigate('/dashboard'); // Redirect to dashboard or another page
+      localStorage.removeItem('cartItems'); 
+      navigate('/dashboard'); 
       setIsSubmitting(false);
     }, 2000);
   };

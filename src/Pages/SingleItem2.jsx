@@ -26,7 +26,7 @@ const SingleItem2 = () => {
     const newItem = {
       id: product.id,  
       name: product.ProductName,
-      price: product.price, // Use original price
+      price: product.price, 
       quantity: quantity > 0 ? quantity : 1,  
     };
   

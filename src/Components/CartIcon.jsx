@@ -9,7 +9,7 @@ const CartIcon = () => {
   useEffect(() => {
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
     const itemCount = cartItems.reduce((total, item) => total + item.quantity, 0);
-    setCartItemCount(itemCount); // Update the cart count dynamically
+    setCartItemCount(itemCount); 
   }, []);
 
   return (
