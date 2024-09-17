@@ -7,8 +7,7 @@ import Signup from './Components/Signup';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Dashboard from './Components/Dashboard';
 import CartPage from './Components/CartPage';
-import Sidenav from './Components/Sidenav';
-import CheckoutPage from './Components/CheckoutPage'
+import CheckoutPage from './Components/CheckoutPage';
 import Self from './Pages/Self';
 import Mystery from './Pages/Mystery';
 import Autobio from './Pages/Autobio';
@@ -19,6 +18,7 @@ import SingleItem2 from './Pages/SingleItem2';
 import SingleItem3 from './Pages/SingleItem3';
 import AboutUs from './Pages/AboutUs';
 import Feedback from './Pages/Feedback';
+import ConditionalLayout from './Components/ConditionalLayout'; // Import ConditionalLayout
 
 function App() {
   return (
@@ -46,21 +46,6 @@ function App() {
         </ConditionalLayout>
       </Router>
     </div>
-  );
-}
-
-function ConditionalLayout({ children }) {
-  const location = useLocation();
-  const isAuthPage = location.pathname === '/reactjs' || location.pathname === '/signup';
-
-  return (
-    <>
-      {/* Render Sidenav and Cart on all pages except authentication pages */}
-      {!isAuthPage && <Sidenav />}
-      
-      {/* Render the main content */}
-      {children}
-    </>
   );
 }
 

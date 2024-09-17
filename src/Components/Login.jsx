@@ -22,7 +22,7 @@ function Login() {
             </Link>
           </div>
           <br /><br />
-          <Link to='/Signup'>
+          <Link to='/signup'>
             <h3>Sign up?</h3>
           </Link>
         </div>
