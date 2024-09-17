@@ -19,93 +19,108 @@ import fictional15 from '../Assets/fictional15.jpg'
 
 export const productsData = [
     {
+        "id": 1,
         "image":fictional1,
         "ProductName":"IT ENDS WITH US",
-        "Price":"300",
+        "price":"300",
 
     },
     {
+        "id": 2,
         "image":fictional2,
         "ProductName":"THE GIRL WHO DRANK THE MOON",
-        "Price":"370",
+        "price":"370",
 
     },
     {
+        "id": 3,
         "image":fictional3,
         "ProductName":"A MAN CALLED OVE",
-        "Price":"280",
+        "price":"280",
 
     },
     {
+        "id": 4,
         "image":fictional4,
         "ProductName":"YOU ONLY LIVE ONCE",
-        "Price":"340",
+        "price":"340",
 
     }, 
     {
+        "id": 5,
         "image":fictional5,
         "ProductName":"A TOUCH OF ETERNITY",
-        "Price":"230",
+        "price":"230",
 
     },
     {
+        "id": 6,
         "image":fictional6,
         "ProductName":"A GIRL WHO KNEW TO MUCH",
-        "Price":"480",
+        "price":"480",
 
     }, 
     {
+        "id": 7,
         "image":fictional7,
         "ProductName":"SOMETHING I NEVER TOLD YOU",
-        "Price":"360",
+        "price":"360",
 
     }, 
     {
+        "id": 8,
         "image":fictional8,
         "ProductName":"A GIRL WITH BROKEN DREAMS",
-        "Price":"430",
+        "price":"430",
 
     }, 
     {
+        "id": 9,
         "image":fictional9,
         "ProductName":"PRIDE AND PREJUDICE",
-        "Price":"450",
+        "price":"450",
 
     }, 
     {
+        "id": 10,
         "image":fictional10,
         "ProductName":"WHEN I AM WITH YOU",
-        "Price":"240",
+        "price":"240",
 
     }, 
     {
+        "id": 11,
         "image":fictional11,
         "ProductName":"MAYBE YOU SHOULD TALK TO SOMEONE",
-        "Price":"290",
+        "price":"290",
 
     },
     {
+        "id": 12,
         "image":fictional12,
         "ProductName":"THE ENEMY",
-        "Price":"450",
+        "price":"450",
 
     },
     {
+        "id": 13,
         "image":fictional13,
         "ProductName":"THE MATCH",
-        "Price":"410",
+        "price":"410",
 
     },
     {
+        "id": 14,
         "image":fictional14,
         "ProductName":"FALLING IN LOVE AGAIN",
-        "Price":"390",
+        "price":"390",
 
     },
     {
+        "id": 15,
         "image":fictional15,
         "ProductName":"BEFORE THE COFFEE GETS COLD",
-        "Price":"350",
+        "price":"350",
 
     },
    

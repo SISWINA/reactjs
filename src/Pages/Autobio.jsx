@@ -26,7 +26,7 @@ function Autobio() {
                 <Link to={`/autobio/${index}`}>
                   <img src={e.image} alt={e.ProductName} />
                   <p>{e.ProductName}</p>
-                  <p>₹{e.Price}</p>
+                  <p>₹{e.price}</p>
                 </Link>
               </div>
             ))}

@@ -8,6 +8,7 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import Dashboard from './Components/Dashboard';
 import CartPage from './Components/CartPage';
 import Sidenav from './Components/Sidenav';
+import CheckoutPage from './Components/CheckoutPage'
 import Self from './Pages/Self';
 import Mystery from './Pages/Mystery';
 import Autobio from './Pages/Autobio';
@@ -30,6 +31,7 @@ function App() {
             <Route path='/signup' element={<Signup />} />
             <Route path='/dashboard' element={<Dashboard />} />
             <Route path="/cart" element={<CartPage />} />
+            <Route path="/checkout" element={<CheckoutPage />} />
             <Route path='/self' element={<Self />} />
             <Route path='/mystery' element={<Mystery />} />
             <Route path='/autobio' element={<Autobio />} />

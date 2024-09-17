@@ -19,93 +19,108 @@ import autobio15 from '../Assets/autobio15.jpg'
 
 export const productsData = [
     {
+        "id": 1,
         "image":autobio1,
         "ProductName":"RATAN TATA",
-        "Price":"400",
+        "price":"400",
 
     },
     {
+        "id": 2,
         "image":autobio2,
         "ProductName":"SUDHA MURTY",
-        "Price":"370",
+        "price":"370",
 
     },
     {
+        "id": 3,
         "image":autobio3,
         "ProductName":"NIKOLA TESLA",
-        "Price":"320",
+        "price":"320",
 
     },
     {
+        "id": 4,
         "image":autobio4,
         "ProductName":"PARAMAHAMSA YOGANANDA",
-        "Price":"440",
+        "price":"440",
 
     }, 
     {
+        "id": 5,
         "image":autobio5,
         "ProductName":"WINGS OF FIRE BY APJ",
-        "Price":"330",
+        "price":"330",
 
     },
     {
+        "id": 6,
         "image":autobio6,
         "ProductName":"FREEDOM IN EXILE",
-        "Price":"380",
+        "price":"380",
 
     }, 
     {
+        "id": 7,
         "image":autobio7,
         "ProductName":"MAHATMA GANDHI",
-        "Price":"460",
+        "price":"460",
 
     }, 
     {
+        "id": 8,
         "image":autobio8,
         "ProductName":"FASTER THAN LIGHTNING BY UB",
-        "Price":"380",
+        "price":"380",
 
     }, 
     {
+        "id": 9,
         "image":autobio9,
         "ProductName":"THE TATAS",
-        "Price":"310",
+        "price":"310",
 
     }, 
     {
+        "id": 10,
         "image":autobio10,
         "ProductName":"MY LIFE BY APJ",
-        "Price":"340",
+        "price":"340",
 
     }, 
     {
+        "id": 11,
         "image":autobio11,
         "ProductName":"A HIMALAYAN MASTER",
-        "Price":"190",
+        "price":"190",
 
     },
     {
+        "id": 12,
         "image":autobio12,
         "ProductName":"STEVE JOBS BY WALTER",
-        "Price":"250",
+        "price":"250",
 
     },
     {
+        "id": 13,
         "image":autobio13,
         "ProductName":"MY LIFE AND WORK BY HENRY",
-        "Price":"340",
+        "price":"340",
 
     },
     {
+        "id": 14,
         "image":autobio14,
         "ProductName":"ELON MUSK BY WALTER",
-        "Price":"270",
+        "price":"270",
 
     },
     {
+        "id": 15,
         "image":autobio15,
         "ProductName":"SACHIN TENDULKAR",
-        "Price":"400",
+        "price":"400",
 
     },
    

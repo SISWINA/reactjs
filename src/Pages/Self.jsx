@@ -21,15 +21,19 @@ function Self() {
         <Col sm={10} className='product-content' style={{ paddingLeft: '5%', paddingRight: '5%' }}>
           <h1 className='genre-header'>GENRE: SELF HELP</h1>
           <div className='product-list'>
-            {productsData.map((e, index) => (
-              <div className='productdata' key={index}>
-                <Link to={`/self/${index}`}>
-                  <img src={e.image} alt={e.ProductName} />
-                  <p>{e.ProductName}</p>
-                  <p>₹{e.Price}</p>
-                </Link>
-              </div>
-            ))}
+            {productsData.length > 0 ? (
+              productsData.map((e, index) => (
+                <div className='productdata' key={index}>
+                  <Link to={`/self/${index}`}>
+                    <img src={e.image} alt={e.ProductName} />
+                    <p>{e.ProductName}</p>
+                    <p>₹{e.price}</p> {/* Ensure lowercase 'price' */}
+                  </Link>
+                </div>
+              ))
+            ) : (
+              <p>No products available</p>
+            )}
           </div>
 
           {/* Back to Top Button */}

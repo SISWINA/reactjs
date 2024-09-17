@@ -2,7 +2,7 @@ import React from 'react';
 import { Row, Col, Button } from 'react-bootstrap'; 
 import { FaArrowUp } from 'react-icons/fa'; 
 import Sidenav from '../Components/Sidenav';
-import { productsData } from '../Data/Products1';
+import { productsData } from '../Data/Products1'; 
 import { Link } from 'react-router-dom';
 
 function Mystery() {
@@ -10,9 +10,8 @@ function Mystery() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  // Function to calculate the discounted price
-  const calculateDiscountedPrice = (price) => {
-    return (price - (price * 0.30)).toFixed(2); // 30% discount
+  const getDiscountedPrice = (price) => {
+    return (price * 0.7).toFixed(2); // Apply 30% discount
   };
 
   return (
@@ -24,20 +23,24 @@ function Mystery() {
         </Col>
         {/* Main content - Products */}
         <Col sm={10} className='product-content' style={{ paddingLeft: '5%', paddingRight: '5%' }}>
-          <h1 className='genre-header'>GENRE: MYSTERY - 30% OFF</h1>
+          <h1 className='genre-header'>GENRE: MYSTERY</h1>
           <div className='product-list'>
-            {productsData.map((e, index) => (
-              <div className='productdata' key={index}>
-                <Link to={`/mystery/${index}`}>
-                  <img src={e.image} alt={e.ProductName} />
-                  <p>{e.ProductName}</p>
-                  <p>
-                    <span style={{ textDecoration: 'line-through', color: 'red' }}>₹{e.Price}</span>{' '}
-                    <span style={{ color: 'green' }}>₹{calculateDiscountedPrice(e.Price)}</span>
-                  </p>
-                </Link>
-              </div>
-            ))}
+            {productsData.length > 0 ? (
+              productsData.map((e, index) => (
+                <div className='productdata' key={index}>
+                  <Link to={`/mystery/${index}`}>
+                    <img src={e.image} alt={e.ProductName} />
+                    <p>{e.ProductName}</p>
+                    <p>
+                      <span style={{ textDecoration: 'line-through', marginRight: '10px' }}>₹{e.price}</span>
+                      ₹{getDiscountedPrice(Number(e.price))}
+                    </p>
+                  </Link>
+                </div>
+              ))
+            ) : (
+              <p>No products available</p>
+            )}
           </div>
 
           {/* Back to Top Button */}

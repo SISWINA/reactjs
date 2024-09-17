@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { productsData } from '../Data/Products3';
 import Sidenav from '../Components/Sidenav';
-import { Row, Col, Button } from 'react-bootstrap'; 
+import { Row, Col, Button } from 'react-bootstrap';
 
 const SingleItem3 = () => {
   const { id } = useParams(); 
@@ -12,10 +12,6 @@ const SingleItem3 = () => {
   if (!product) {
     return <h2>Product not found!</h2>; 
   }
-
-  const calculateDiscountedPrice = (price) => {
-    return (price - (price * 0.30)).toFixed(2); 
-  };
 
   const increaseQuantity = () => setQuantity(quantity + 1);
 
@@ -30,7 +26,7 @@ const SingleItem3 = () => {
     const newItem = {
       id: product.id,  
       name: product.ProductName,
-      price: calculateDiscountedPrice(product.Price),
+      price: product.price, // Use original price
       quantity: quantity > 0 ? quantity : 1,  
     };
   
@@ -40,11 +36,14 @@ const SingleItem3 = () => {
     } else {
       cartItems.push(newItem);
     }
-
+  
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
     alert(`${newItem.name} added to cart!`);
   };
-  
+
+  const getDiscountedPrice = (price) => {
+    return (price * 0.7).toFixed(2); // Apply 30% discount
+  };
 
   return (
     <div className="container-fluid">
@@ -63,9 +62,12 @@ const SingleItem3 = () => {
             <div className="product-details">
               <h2>{product.ProductName}</h2>
               <p>
-                Price: 
-                <span style={{ textDecoration: 'line-through', color: 'red' }}> ₹{product.Price}</span>{' '}
-                <span style={{ color: 'green' }}> ₹{calculateDiscountedPrice(product.Price)}</span>
+                <span style={{ textDecoration: 'line-through', color: 'red', marginRight: '10px' }}>
+                  ₹{product.price}
+                </span>
+                <span style={{ color: 'green' }}>
+                  ₹{getDiscountedPrice(Number(product.price))}
+                </span>
               </p>
               <div className="quantity-controls">
                 <Button variant="outline-secondary" onClick={decreaseQuantity}>-</Button>

@@ -17,93 +17,108 @@ import mystery15 from '../Assets/mystery15.jpg'
 
 export const productsData = [
     {
+        "id": 1,
         "image":mystery1,
         "ProductName":"THE MAID",
-        "Price":"300",
+        "price":"300",
 
     },
     {
+        "id": 2,
         "image":mystery2,
         "ProductName":"THAT NIGHT",
-        "Price":"290",
+        "price":"290",
 
     },
     {
+        "id": 3,
         "image":mystery3,
         "ProductName":"THE SILENT PATIENT",
-        "Price":"180",
+        "price":"180",
 
     },
     {
+        "id": 4,
         "image":mystery4,
         "ProductName":"ONE OF US IS LYING",
-        "Price":"260",
+        "price":"260",
 
     }, 
     {
+        "id": 5,
         "image":mystery5,
         "ProductName":"THE HOUSEMAID",
-        "Price":"230",
+        "price":"230",
 
     },
     {
+        "id": 6,
         "image":mystery6,
         "ProductName":"AGATHA ODDLY",
-        "Price":"260",
+        "price":"260",
 
     }, 
     {
+        "id": 7,
         "image":mystery7,
         "ProductName":"VERITY",
-        "Price":"300",
+        "price":"300",
 
     }, 
     {
+        "id": 8,
         "image":mystery8,
         "ProductName":"GHOST OF THE SILENT HILLS",
-        "Price":"480",
+        "price":"480",
 
     }, 
     {
+        "id": 9,
         "image":mystery9,
         "ProductName":"365 UNSOLVED MYSTERIES",
-        "Price":"310",
+        "price":"310",
 
     }, 
     {
+        "id": 10,
         "image":mystery10,
         "ProductName":"HOW TO KILL MEN AND GET AWAY WITH IT",
-        "Price":"340",
+        "price":"340",
 
     }, 
     {
+        "id": 11,
         "image":mystery11,
         "ProductName":"SHERLOCK HOLMES COMPLETE NOVEL",
-        "Price":"400",
+        "price":"400",
 
     },
     {
+        "id": 12,
         "image":mystery12,
         "ProductName":"THE FAMILY UPSTAIRS",
-        "Price":"350",
+        "price":"350",
 
     },
     {
+        "id": 13,
         "image":mystery13,
         "ProductName":"WRONG PLACE WRONG TIME",
-        "Price":"290",
+        "price":"290",
 
     },
     {
+        "id": 14,
         "image":mystery14,
         "ProductName":"THE LOCKED DOOR",
-        "Price":"270",
+        "price":"270",
 
     },
     {
+        "id": 15,
         "image":mystery15,
         "ProductName":"THE GIRL IN THE HOUSE",
-        "Price":"260",
+        "price":"260",
 
     },
    

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { productsData } from '../Data/Products';
 import Sidenav from '../Components/Sidenav';
-import { Row, Col, Button } from 'react-bootstrap'; 
+import { Row, Col, Button } from 'react-bootstrap';
 
 const SingleItem = () => {
   const { id } = useParams(); 
@@ -12,10 +12,6 @@ const SingleItem = () => {
   if (!product) {
     return <h2>Product not found!</h2>; 
   }
-
-  const calculateDiscountedPrice = (price) => {
-    return (price - (price * 0.30)).toFixed(2); 
-  };
 
   const increaseQuantity = () => setQuantity(quantity + 1);
 
@@ -30,7 +26,7 @@ const SingleItem = () => {
     const newItem = {
       id: product.id,  
       name: product.ProductName,
-      price: calculateDiscountedPrice(product.Price),
+      price: product.price, // Use original price
       quantity: quantity > 0 ? quantity : 1,  
     };
   
@@ -45,7 +41,6 @@ const SingleItem = () => {
     alert(`${newItem.name} added to cart!`);
   };
   
-
   return (
     <div className="container-fluid">
       <Row>
@@ -63,9 +58,7 @@ const SingleItem = () => {
             <div className="product-details">
               <h2>{product.ProductName}</h2>
               <p>
-                Price: 
-                <span style={{ textDecoration: 'line-through', color: 'red' }}> ₹{product.Price}</span>{' '}
-                <span style={{ color: 'green' }}> ₹{calculateDiscountedPrice(product.Price)}</span>
+                Price: ₹{product.price} {/* Display original price */}
               </p>
               <div className="quantity-controls">
                 <Button variant="outline-secondary" onClick={decreaseQuantity}>-</Button>

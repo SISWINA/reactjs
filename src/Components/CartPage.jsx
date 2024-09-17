@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import { FaArrowUp } from 'react-icons/fa'; // Import the arrow icon
+import { Link } from 'react-router-dom'; // Import Link
 import CartItem from './CartItem';
 
 const CartPage = () => {
@@ -9,50 +10,62 @@ const CartPage = () => {
   useEffect(() => {
     const fetchCartItems = () => {
       const items = JSON.parse(localStorage.getItem('cartItems')) || [];
-      setCartItems(items);
+      setCartItems(items); // Set state with items from localStorage
     };
-
     fetchCartItems();
   }, []);
 
   const handleRemove = (id) => {
     const updatedCartItems = cartItems.filter(item => item.id !== id);
-    setCartItems(updatedCartItems);
-    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+    setCartItems(updatedCartItems); 
+    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems)); // Update localStorage
   };
 
-  // Handle quantity change of an item
   const handleQuantityChange = (id, quantity) => {
     const updatedCartItems = cartItems.map(item => 
-      item.id === id ? { ...item, quantity } : item
+      item.id === id ? { ...item, quantity: quantity } : item
     );
     setCartItems(updatedCartItems);
-    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems)); // Update localStorage
   };
 
-  const totalAmount = cartItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+  const handleCheckout = () => {
+    alert("Checkout functionality not implemented yet.");
+  };
+
+  // Function to scroll to the top of the page
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <div className="container">
       <h2>Shopping Cart</h2>
-      {cartItems.length === 0 ? (
-        <p>Your cart is empty</p>
-      ) : (
+      <div className="cart-items">
+        {cartItems.length > 0 ? (
+          cartItems.map(item => (
+            <CartItem 
+              key={item.id} 
+              item={item} 
+              onRemove={handleRemove} 
+              onQuantityChange={handleQuantityChange} 
+            />
+          ))
+        ) : (
+          <p>Your cart is empty.</p>
+        )}
+      </div>
+      {cartItems.length > 0 && (
         <div>
-          <div className="cart-items-list">
-            {cartItems.map(item => (
-              <CartItem 
-                key={item.id} 
-                item={item} 
-                onRemove={handleRemove} 
-                onQuantityChange={handleQuantityChange} 
-              />
-            ))}
-          </div>
-          <h3>Total Amount: ₹{totalAmount.toFixed(2)}</h3>
-          <Link to="/checkout">
-            <Button variant="success">Proceed to Checkout</Button>
-          </Link>
+          <Button variant="success">
+            <Link to="/checkout" style={{ color: 'white', textDecoration: 'none' }}>
+              Checkout
+            </Link>
+          </Button>
+          {/* Back to Top Button */}
+          <Button className="back-to-top" onClick={scrollToTop} variant="secondary" style={{ position: 'fixed', bottom: '20px', right: '20px' }}>
+            <FaArrowUp size={20} />
+          </Button>
         </div>
       )}
     </div>
