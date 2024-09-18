@@ -9,6 +9,12 @@ const SingleItem1 = () => {
   const product = productsData[id]; 
   const [quantity, setQuantity] = useState(1); 
 
+  // Define the getDiscountedPrice function
+  const getDiscountedPrice = (price) => {
+    const discountRate = 0.1; // Example: 10% discount
+    return (price - (price * discountRate)).toFixed(2);
+  };
+
   if (!product) {
     return <h2>Product not found!</h2>; 
   }
@@ -23,10 +29,12 @@ const SingleItem1 = () => {
 
   const addToCart = () => {
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const discountedPrice = getDiscountedPrice(Number(product.price)); // Calculate the discounted price
+  
     const newItem = {
       id: product.id,  
       name: product.ProductName,
-      price: product.price,
+      price: discountedPrice, // Use the discounted price
       quantity: quantity > 0 ? quantity : 1,  
     };
   
@@ -39,10 +47,6 @@ const SingleItem1 = () => {
   
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
     alert(`${newItem.name} added to cart!`);
-  };
-
-  const getDiscountedPrice = (price) => {
-    return (price * 0.7).toFixed(2); 
   };
 
   return (

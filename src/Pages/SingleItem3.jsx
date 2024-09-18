@@ -12,6 +12,9 @@ const SingleItem3 = () => {
   if (!product) {
     return <h2>Product not found!</h2>; 
   }
+  const getDiscountedPrice = (price) => {
+    return (price * 0.7).toFixed(2); 
+  };
 
   const increaseQuantity = () => setQuantity(quantity + 1);
 
@@ -23,10 +26,12 @@ const SingleItem3 = () => {
 
   const addToCart = () => {
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const discountedPrice = getDiscountedPrice(Number(product.price));
+  
     const newItem = {
       id: product.id,  
       name: product.ProductName,
-      price: product.price, 
+      price: discountedPrice, 
       quantity: quantity > 0 ? quantity : 1,  
     };
   
@@ -39,10 +44,6 @@ const SingleItem3 = () => {
   
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
     alert(`${newItem.name} added to cart!`);
-  };
-
-  const getDiscountedPrice = (price) => {
-    return (price * 0.7).toFixed(2); 
   };
 
   return (

@@ -4,6 +4,7 @@ import Sidenav from './Sidenav';
 
 function ConditionalLayout({ children }) {
   const location = useLocation();
+  
   const isAuthPage = location.pathname === '/reactjs' || location.pathname === '/signup';
 
   return (
