@@ -109,7 +109,7 @@ const SingleItem4 = () => {
                   ₹{getDiscountedPrice(Number(product.price))}
                 </span>
               </p>
-              <p>{product.description || 'No description available.'}</p>
+              <p className="justified-text">{product.description || 'No description available.'}</p>
               <p><strong>Author: {product.author}</strong></p> {/* Added author name display */}
 
            {/* Star Rating from Products Data */}

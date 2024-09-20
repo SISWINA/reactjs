@@ -1142,3 +1142,9 @@ h4 {
 .search-results {
   margin-left: 20%; 
 }
+
+.justified-text {
+  text-align: justify;
+  line-height: 1.5; /* Optional for better readability */
+  font-family: Arial, Helvetica, sans-serif;
+}

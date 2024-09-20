@@ -99,7 +99,7 @@ const SingleItem = () => {
               <p style={{ fontSize: '28px', color: 'green' }}>
                 ₹{product.price}
               </p>
-              <p>{product.description || 'No description available.'}</p>
+              <p className="justified-text">{product.description || 'No description available.'}</p>
               <p><strong>Author: {product.author}</strong></p> {/* Added author name display */}
 
               {/* Star Rating from Products Data */}
