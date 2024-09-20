@@ -18,7 +18,6 @@ import best17 from '../Assets/best17.jpg';
 import best18 from '../Assets/best18.jpg';
 import best19 from '../Assets/best19.jpg';
 import best20 from '../Assets/best20.jpg';
-import best21 from '../Assets/best21.jpg'; 
 
 export const productsData = [
     {
@@ -199,15 +198,6 @@ export const productsData = [
         "price": 500,
         "description": "At the magical Cafe Funiculi Funicula, patrons can time travel to reconnect with lost loved ones, but there are strict rules: they must have visited before and return before their coffee goes cold. In Before We Say Goodbye, a new set of visitors includes a husband with unfinished words, a woman unable to say goodbye to her dog, another who couldn't respond to a proposal, and a daughter estranged from her father. Toshikazu Kawaguchi invites readers to join these characters as they seek to revisit pivotal moments in their lives, navigating the emotional weight of their journeys.",
         "author": "Toshikazu Kawaguchi",
-        "rating": 4
-    },
-    {
-        "id": 21,
-        "image": best21,
-        "ProductName": "WHEN THE SUN NEVER SETS",
-        "price": 550,
-        "description": "What if you stumbled upon your old diary? Would you dare to read it? In Where the Sun Never Sets, Iti returns to her hometown of Mussoorie during the COVID-19 lockdown to work on her first movie script. Reuniting with her first love, Nishit, and her estranged best friend, Shelly, she confronts memories she thought she had left behind. As she dives into her diary, Iti grapples with her past, discovering that facing old dreams and turbulent relationships might hold the key to completing her story—and transforming her life.",
-        "author": "Stuti Changle",
         "rating": 4
     },
 ];
