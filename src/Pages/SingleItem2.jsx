@@ -3,11 +3,14 @@ import { useParams } from 'react-router-dom';
 import { productsData } from '../Data/Products2';
 import Sidenav from '../Components/Sidenav';
 import { Row, Col, Button } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const SingleItem2 = () => {
   const { id } = useParams(); 
   const product = productsData[id]; 
-  const [quantity, setQuantity] = useState(1); 
+  const [quantity, setQuantity] = useState(1);
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [rating, setRating] = useState(0);
 
   if (!product) {
     return <h2>Product not found!</h2>; 
@@ -23,6 +26,7 @@ const SingleItem2 = () => {
 
   const addToCart = () => {
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+  
     const newItem = {
       id: product.id,  
       name: product.ProductName,
@@ -40,7 +44,26 @@ const SingleItem2 = () => {
     localStorage.setItem('cartItems', JSON.stringify(cartItems));
     alert(`${newItem.name} added to cart!`);
   };
-  
+
+  // Toggle zoom
+  const handleZoom = () => {
+    setIsZoomed(!isZoomed);
+  };
+
+  const renderStars = (rating) => {
+    return [...Array(5)].map((_, index) => (
+      <span 
+        key={index} 
+        style={{ 
+          fontSize: '20px', 
+          color: index < rating ? '#ffc107' : '#e4e5e9'
+        }}
+      >
+        ★
+      </span>
+    ));
+  };
+
   return (
     <div className="container-fluid">
       <Row>
@@ -51,25 +74,55 @@ const SingleItem2 = () => {
 
         {/* Main content - Product details */}
         <Col sm={10} className="product-content">
-          <div className="single-product">
-            <div className="product-image">
-              <img src={product.image} alt={product.ProductName} />
-            </div>
-            <div className="product-details">
-              <h2>{product.ProductName}</h2>
-              <p>
-                Price: ₹{product.price} {/* Display original price */}
+          <Row className="mt-4">
+            {/* Left Column - Product Image */}
+            <Col sm={5}>
+              <div 
+                className={`product-image ${isZoomed ? 'zoom' : ''}`} 
+                onClick={handleZoom}
+                style={{ border: '1px solid #ddd', padding: '10px', cursor: 'zoom-in' }}
+              >
+                <img 
+                  src={product.image} 
+                  alt={product.ProductName} 
+                  style={{ width: '100%', transition: 'transform 0.3s ease' }}
+                />
+              </div>
+              <p style={{ fontSize: '12px', color: '#999' }}>
+                Click to {isZoomed ? 'zoom out' : 'zoom in'}
               </p>
+            </Col>
+
+            {/* Right Column - Product Info */}
+            <Col sm={7}>
+              <h2>{product.ProductName}</h2>
+              <p style={{ fontSize: '28px', color: 'green' }}>
+                ₹{product.price}
+              </p>
+              <p>{product.description || 'No description available.'}</p>
+              <p><strong>Author: {product.author}</strong></p> {/* Added author name display */}
+
+              {/* Star Rating from Products Data */}
+              <div className="star-rating" style={{ marginBottom: '10px' }}>
+                {renderStars(product.rating)}
+                <p style={{ marginTop: '5px' }}>Rating: {product.rating} Star{product.rating > 1 ? 's' : ''}</p>
+              </div>
+
+              {/* Quantity Controls and Add to Cart */}
               <div className="quantity-controls">
                 <Button variant="outline-secondary" onClick={decreaseQuantity}>-</Button>
-                <span>{quantity}</span>
+                <span style={{ padding: '0 10px', fontSize: '18px' }}>{quantity}</span>
                 <Button variant="outline-secondary" onClick={increaseQuantity}>+</Button>
               </div>
-              <Button variant="success" onClick={addToCart} style={{ marginTop: '20px' }}>
+              <Button 
+                variant="success" 
+                onClick={addToCart} 
+                style={{ marginTop: '20px', display: 'block', width: '100%' }}
+              >
                 Add to Cart
               </Button>
-            </div>
-          </div>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </div>

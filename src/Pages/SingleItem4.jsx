@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { productsData } from '../Data/Products3';
+import { productsData } from '../Data/Products4';
 import Sidenav from '../Components/Sidenav';
 import { Row, Col, Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const SingleItem3 = () => {
+const SingleItem4 = () => {
   const { id } = useParams(); 
   const product = productsData[id]; 
   const [quantity, setQuantity] = useState(1);
@@ -15,6 +15,10 @@ const SingleItem3 = () => {
   if (!product) {
     return <h2>Product not found!</h2>; 
   }
+
+  const getDiscountedPrice = (price) => {
+    return (price * 0.7).toFixed(2); 
+  };
 
   const increaseQuantity = () => setQuantity(quantity + 1);
 
@@ -26,11 +30,12 @@ const SingleItem3 = () => {
 
   const addToCart = () => {
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+    const discountedPrice = getDiscountedPrice(Number(product.price));
   
     const newItem = {
       id: product.id,  
       name: product.ProductName,
-      price: product.price, 
+      price: discountedPrice, 
       quantity: quantity > 0 ? quantity : 1,  
     };
   
@@ -96,17 +101,23 @@ const SingleItem3 = () => {
             {/* Right Column - Product Info */}
             <Col sm={7}>
               <h2>{product.ProductName}</h2>
-              <p style={{ fontSize: '28px', color: 'green' }}>
-                ₹{product.price}
+              <p>
+                <span style={{ textDecoration: 'line-through', color: 'red', fontSize: '24px' }}>
+                  ₹{product.price}
+                </span>
+                <span style={{ color: 'green', fontSize: '28px', marginLeft: '10px' }}>
+                  ₹{getDiscountedPrice(Number(product.price))}
+                </span>
               </p>
               <p>{product.description || 'No description available.'}</p>
               <p><strong>Author: {product.author}</strong></p> {/* Added author name display */}
 
-              {/* Star Rating from Products Data */}
-              <div className="star-rating" style={{ marginBottom: '10px' }}>
+           {/* Star Rating from Products Data */}
+           <div className="star-rating" style={{ marginBottom: '10px' }}>
                 {renderStars(product.rating)}
                 <p style={{ marginTop: '5px' }}>Rating: {product.rating} Star{product.rating > 1 ? 's' : ''}</p>
               </div>
+
 
               {/* Quantity Controls and Add to Cart */}
               <div className="quantity-controls">
@@ -129,4 +140,4 @@ const SingleItem3 = () => {
   );
 };
 
-export default SingleItem3;
+export default SingleItem4;

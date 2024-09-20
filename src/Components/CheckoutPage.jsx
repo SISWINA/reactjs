@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Form, Col, Row } from 'react-bootstrap';
+import { Button, Form, Col, Row, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
-
+import 'bootstrap/dist/css/bootstrap.min.css';
+ 
 const CheckoutPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [formData, setFormData] = useState({
@@ -17,7 +18,7 @@ const CheckoutPage = () => {
   useEffect(() => {
     const fetchCartItems = () => {
       const items = JSON.parse(localStorage.getItem('cartItems')) || [];
-      setCartItems(items); 
+      setCartItems(items);
     };
     fetchCartItems();
   }, []);
@@ -33,14 +34,24 @@ const CheckoutPage = () => {
 
     setTimeout(() => {
       alert('Order placed successfully!');
-      localStorage.removeItem('cartItems'); 
-      navigate('/dashboard'); 
+      localStorage.removeItem('cartItems');
+      navigate('/dashboard');
       setIsSubmitting(false);
     }, 2000);
   };
 
+  const calculateTotal = () => {
+    return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+  };
+
+  const deliveryFee = 50; // Example delivery fee
+  const totalAmount = calculateTotal() + deliveryFee;
+
+  const expectedDeliveryDate = new Date();
+  expectedDeliveryDate.setDate(expectedDeliveryDate.getDate() + 5); // 5 days from now
+
   return (
-    <div className="container">
+    <div className="container mt-4">
       <h2>Checkout</h2>
       <Row>
         <Col md={8}>
@@ -48,57 +59,57 @@ const CheckoutPage = () => {
           <Form onSubmit={handleSubmit}>
             <Form.Group controlId="formName">
               <Form.Label>Name</Form.Label>
-              <Form.Control 
-                type="text" 
-                name="name" 
-                value={formData.name} 
-                onChange={handleChange} 
-                required 
+              <Form.Control
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                required
               />
             </Form.Group>
             <Form.Group controlId="formEmail">
               <Form.Label>Email</Form.Label>
-              <Form.Control 
-                type="email" 
-                name="email" 
-                value={formData.email} 
-                onChange={handleChange} 
-                required 
+              <Form.Control
+                type="email"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+                required
               />
             </Form.Group>
             <Form.Group controlId="formAddress">
               <Form.Label>Address</Form.Label>
-              <Form.Control 
-                type="text" 
-                name="address" 
-                value={formData.address} 
-                onChange={handleChange} 
-                required 
+              <Form.Control
+                type="text"
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
+                required
               />
             </Form.Group>
             <Form.Group controlId="formCity">
               <Form.Label>City</Form.Label>
-              <Form.Control 
-                type="text" 
-                name="city" 
-                value={formData.city} 
-                onChange={handleChange} 
-                required 
+              <Form.Control
+                type="text"
+                name="city"
+                value={formData.city}
+                onChange={handleChange}
+                required
               />
             </Form.Group>
             <Form.Group controlId="formPostalCode">
               <Form.Label>Postal Code</Form.Label>
-              <Form.Control 
-                type="text" 
-                name="postalCode" 
-                value={formData.postalCode} 
-                onChange={handleChange} 
-                required 
+              <Form.Control
+                type="text"
+                name="postalCode"
+                value={formData.postalCode}
+                onChange={handleChange}
+                required
               />
             </Form.Group>
-            <Button 
-              variant="primary" 
-              type="submit" 
+            <Button
+              variant="primary"
+              type="submit"
               disabled={isSubmitting}
             >
               {isSubmitting ? 'Processing...' : 'Place Order'}
@@ -107,23 +118,24 @@ const CheckoutPage = () => {
         </Col>
         <Col md={4}>
           <h3>Order Summary</h3>
-          <div className="order-summary">
+          <Card className="order-summary p-3">
             {cartItems.length > 0 ? (
               cartItems.map(item => (
-                <div key={item.id} className="order-item">
-                  <p>{item.name}</p>
-                  <p>₹{item.price} x {item.quantity}</p>
-                  <p>Total: ₹{(item.price * item.quantity).toFixed(2)}</p>
+                <div key={item.id} className="order-item mb-2">
+                  <p>{item.name} <span className="float-right">₹{item.price} x {item.quantity}</span></p>
+                  <p className="text-muted">Total: ₹{(item.price * item.quantity).toFixed(2)}</p>
                 </div>
               ))
             ) : (
               <p>Your cart is empty.</p>
             )}
             <hr />
+            <p><strong>Delivery Fee:</strong> ₹{deliveryFee}</p>
+            <p><strong>Expected Delivery:</strong> {expectedDeliveryDate.toDateString()}</p>
             <h4>
-              Total Amount: ₹{cartItems.reduce((total, item) => total + (item.price * item.quantity), 0).toFixed(2)}
+              <strong>Total Amount:</strong> ₹{totalAmount.toFixed(2)}
             </h4>
-          </div>
+          </Card>
         </Col>
       </Row>
     </div>

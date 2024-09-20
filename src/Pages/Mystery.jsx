@@ -2,16 +2,12 @@ import React from 'react';
 import { Row, Col, Button } from 'react-bootstrap'; 
 import { FaArrowUp } from 'react-icons/fa'; 
 import Sidenav from '../Components/Sidenav';
-import { productsData } from '../Data/Products1'; 
+import { productsData } from '../Data/Products1';
 import { Link } from 'react-router-dom';
 
 function Mystery() {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const getDiscountedPrice = (price) => {
-    return (price * 0.7).toFixed(2); // Apply 30% discount
   };
 
   return (
@@ -31,10 +27,7 @@ function Mystery() {
                   <Link to={`/mystery/${index}`}>
                     <img src={e.image} alt={e.ProductName} />
                     <p>{e.ProductName}</p>
-                    <p>
-                      <span style={{ textDecoration: 'line-through', marginRight: '10px' }}>₹{e.price}</span>
-                      ₹{getDiscountedPrice(Number(e.price))}
-                    </p>
+                    <p>₹{e.price}</p> {/* Ensure lowercase 'price' */}
                   </Link>
                 </div>
               ))
