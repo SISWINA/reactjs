@@ -10,15 +10,10 @@ const SingleItem4 = () => {
   const product = productsData[id]; 
   const [quantity, setQuantity] = useState(1);
   const [isZoomed, setIsZoomed] = useState(false);
-  const [rating, setRating] = useState(0);
-
+  
   if (!product) {
     return <h2>Product not found!</h2>; 
   }
-
-  const getDiscountedPrice = (price) => {
-    return (price * 0.7).toFixed(2); 
-  };
 
   const increaseQuantity = () => setQuantity(quantity + 1);
 
@@ -30,12 +25,11 @@ const SingleItem4 = () => {
 
   const addToCart = () => {
     const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
-    const discountedPrice = getDiscountedPrice(Number(product.price));
   
     const newItem = {
       id: product.id,  
       name: product.ProductName,
-      price: discountedPrice, 
+      price: product.price, 
       quantity: quantity > 0 ? quantity : 1,  
     };
   
@@ -78,10 +72,10 @@ const SingleItem4 = () => {
         </Col>
 
         {/* Main content - Product details */}
-        <Col sm={10} className="product-content">
-          <Row className="mt-4">
+        <Col sm={9} className="product-content d-flex justify-content-center">
+          <Row className="mt-4" style={{ width: '100%' }}>
             {/* Left Column - Product Image */}
-            <Col sm={5}>
+            <Col sm={5} style={{ marginLeft: '50px' }}> {/* Added marginLeft to move image away from sidebar */}
               <div 
                 className={`product-image ${isZoomed ? 'zoom' : ''}`} 
                 onClick={handleZoom}
@@ -90,7 +84,7 @@ const SingleItem4 = () => {
                 <img 
                   src={product.image} 
                   alt={product.ProductName} 
-                  style={{ width: '100%', transition: 'transform 0.3s ease' }}
+                  style={{ width: '90%', transition: 'transform 0.3s ease' }}
                 />
               </div>
               <p style={{ fontSize: '12px', color: '#999' }}>
@@ -99,25 +93,19 @@ const SingleItem4 = () => {
             </Col>
 
             {/* Right Column - Product Info */}
-            <Col sm={7}>
+            <Col sm={6}>
               <h2>{product.ProductName}</h2>
-              <p>
-                <span style={{ textDecoration: 'line-through', color: 'red', fontSize: '24px' }}>
-                  ₹{product.price}
-                </span>
-                <span style={{ color: 'green', fontSize: '28px', marginLeft: '10px' }}>
-                  ₹{getDiscountedPrice(Number(product.price))}
-                </span>
+              <p style={{ fontSize: '28px', color: 'green', marginTop: '10px' }}>
+                ₹{product.price}
               </p>
-              <p className="justified-text">{product.description || 'No description available.'}</p>
-              <p><strong>Author: {product.author}</strong></p> {/* Added author name display */}
+              <p className="justified-text" style={{ marginTop: '10px' }}>{product.description || 'No description available.'}</p>
+              <p><strong>Author: {product.author}</strong></p>
 
-           {/* Star Rating from Products Data */}
-           <div className="star-rating" style={{ marginBottom: '10px' }}>
+              {/* Star Rating from Products Data */}
+              <div className="star-rating" style={{ marginBottom: '10px' }}>
                 {renderStars(product.rating)}
                 <p style={{ marginTop: '5px' }}>Rating: {product.rating} Star{product.rating > 1 ? 's' : ''}</p>
               </div>
-
 
               {/* Quantity Controls and Add to Cart */}
               <div className="quantity-controls">

@@ -10,7 +10,6 @@ import { productsData as productsData4 } from '../Data/Products4';
 import { Link, useNavigate } from 'react-router-dom';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, BarChart, Bar } from 'recharts';
 
-// Sample data for charts
 const dailySalesData = [
   { day: 'Mon', sales: 4000 },
   { day: 'Tue', sales: 3000 },
@@ -60,84 +59,81 @@ function Dashboard() {
                 <Col sm={2} className="sidenav-col">
                     <Sidenav />
                 </Col>
-                <Col sm={10} className="main-content-col">
-                    {/* Charts Section */}
-                    <Row className="charts-section mb-4">
-                        <Col md={6} className="chart-col">
-                            <h3>Daily Sales</h3>
-                            <LineChart
-                                width={600}
-                                height={300}
-                                data={dailySalesData}
-                                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-                            >
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="day" />
-                                <YAxis />
-                                <Tooltip />
-                                <Legend />
-                                <Line type="monotone" dataKey="sales" stroke="#ff7300" strokeWidth={3} />
-                            </LineChart>
-                        </Col>
-                        <Col md={6} className="chart-col">
-                            <h3>Website Views by Hour</h3>
-                            <BarChart
-                                width={600}
-                                height={300}
-                                data={websiteViewsData}
-                                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
-                            >
-                                <CartesianGrid strokeDasharray="3 3" />
-                                <XAxis dataKey="hour" />
-                                <YAxis />
-                                <Tooltip />
-                                <Legend />
-                                <Bar dataKey="views" fill="#0088fe" />
-                            </BarChart>
-                        </Col>
-                    </Row>
 
-                    {/* Marquee Section */}
+                {/* Adjust main content to sm={8} and add custom CSS */}
+                <Col sm={8} className="main-content-col content-wrapper">
+                <Row className="charts-section mb-4">
+    <Col md={6} className="chart-col">
+        <h3>Daily Sales</h3>
+        <LineChart
+            width={500}  // Decrease width
+            height={250} // Decrease height
+            data={dailySalesData}
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="day" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Line type="monotone" dataKey="sales" stroke="#ff7300" strokeWidth={3} />
+        </LineChart>
+    </Col>
+    <Col md={6} className="chart-col">
+        <h3>Website Views by Hour</h3>
+        <BarChart
+            width={500}  // Decrease width
+            height={250} // Decrease height
+            data={websiteViewsData}
+            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+        >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="hour" />
+            <YAxis />
+            <Tooltip />
+            <Legend />
+            <Bar dataKey="views" fill="#0088fe" />
+        </BarChart>
+    </Col>
+</Row>
+
+
                     <div className="marquee-container" onClick={handleMarqueeClick}>
                         <div className="marquee-text">
                             MEGA-DISCOUNT ON THE BEST SELLERS OF THE YEAR
                         </div>
                     </div>
 
-                    {/* Header for Product Carousel */}
                     <h2 className="products-header">BEST SELLERS</h2>
 
-                    {/* Product Carousel for ProductsData4 */}
                     <Carousel indicators={false} controls>
-                     {chunks.map((chunk, chunkIndex) => (
-                        <Carousel.Item key={chunkIndex}>
-                           <Row className="product-row">
-                               {chunk.map((product, productIndex) => {
-                              const productId = chunkIndex * chunk.length + productIndex; 
-                                 return (
-                                       <Col sm={3} key={product.id}>
-                                          <Card className="product-card">
-                                             <Link to={`/best/${productId}`}>
-                                           <Card.Img
-                                                 variant="top"
-                                                     src={product.image}
-                                               className="product-img"
-                                           />
-                                         <Card.Body>
-                                        <Card.Title>{product.name}</Card.Title>
-                                      </Card.Body>
-                                 </Link>
-                             </Card>
-                          </Col>
-                      );
-                    })}
-                </Row>
-            </Carousel.Item>
-          ))}
-        </Carousel>
+                        {chunks.map((chunk, chunkIndex) => (
+                            <Carousel.Item key={chunkIndex}>
+                                <Row className="product-row">
+                                    {chunk.map((product, productIndex) => {
+                                        const productId = chunkIndex * chunk.length + productIndex; 
+                                        return (
+                                            <Col sm={3} key={product.id}>
+                                                <Card className="product-card">
+                                                    <Link to={`/best/${productId}`}>
+                                                        <Card.Img
+                                                            variant="top"
+                                                            src={product.image}
+                                                            className="product-img"
+                                                        />
+                                                        <Card.Body>
+                                                            <Card.Title>{product.name}</Card.Title>
+                                                        </Card.Body>
+                                                    </Link>
+                                                </Card>
+                                            </Col>
+                                        );
+                                    })}
+                                </Row>
+                            </Carousel.Item>
+                        ))}
+                    </Carousel>
 
-
-                    {/* Header for Products */}
                     <h2 className="products-header">OUR PRODUCTS</h2>
 
                     <div className="dash maindata">
@@ -234,7 +230,6 @@ function Dashboard() {
                         </div>
                     </div>
 
-                    {/* Back to Top Button */}
                     <Button className="back-to-top" onClick={scrollToTop} variant="secondary">
                         <FaArrowUp size={20} />
                     </Button>

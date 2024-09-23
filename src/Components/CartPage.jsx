@@ -38,7 +38,7 @@ const CartPage = () => {
   };
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-4" style={{ paddingLeft: '15px' }}>
       <Row>
         {/* Cart Items Section */}
         <Col md={8}>

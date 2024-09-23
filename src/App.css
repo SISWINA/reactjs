@@ -7,6 +7,16 @@ body{
   padding: 0;
 }
 
+.main-content-col {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.content-wrapper {
+  margin: 0 auto; 
+  max-width: 1200px;
+}
+
 /*LOGIN*/
 /* Existing styles for login container */
 .loginbody {
@@ -535,6 +545,7 @@ body{
 /* General layout for pages with fixed sidebar */
 .maindata {
   display: flex;
+  padding-top: 10px; 
 }
 
 .sidenav-fixed {
@@ -545,40 +556,46 @@ body{
   width: 16.6667%; 
   background-color: #f8f9fa; 
   overflow-y: auto; 
-  padding: 1rem; 
+  padding: 1rem;
 }
 
 .content {
-  margin-left: 16.6667%; 
-  padding: 2rem; 
+  margin-left: 17%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 90vh; 
 }
 
 .about-content {
-  display: flex; 
-  align-items: center; 
-  font-family:cursive;
-  gap: 2rem; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: cursive;
+  gap: 2rem;
+  width: 100%;
+  max-width: 80%; 
 }
 
 .about-image {
-  width: 50%; 
-  height: auto; 
+  width: 40%; 
+  height: auto;
 }
 
 .about-text {
-  max-width: 50%; 
+  width: 60%; 
 }
 
 .page-header {
-  font-size: 3rem; 
-  margin-bottom: 1rem; 
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
 }
 
 .page-text {
-  font-size: 1.5rem; 
-  line-height: 1.5; 
-  margin-bottom: 1rem; 
-  text-align: justify; 
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  text-align: justify;
 }
 
 .sidenav-fixed {
@@ -901,7 +918,7 @@ h4 {
   right: 0; 
   z-index: 999; 
   width: calc(100% - 240px); 
-  max-width: 1200px; 
+  max-width: 1000px; 
   margin: 0 auto; 
   box-shadow: 0 2px 4px rgb(82, 9, 208); 
   display: flex; 
@@ -912,11 +929,11 @@ h4 {
 .search-form {
   display: flex;
   align-items: center;
-  margin-left: 20px; 
+  margin-left: 30px; 
 }
 
 .search-form .form-control {
-  margin-right: 20px;
+  margin-right: 30px;
   width: 250px; 
 }
 
@@ -925,7 +942,7 @@ h4 {
   background-color: #7f1de1;
   color: white;
   border: none;
-  padding: 8px 15px;
+  padding: 5px 10px;
   cursor: pointer;
 }
 
@@ -944,7 +961,7 @@ h4 {
 }
 
 .cart-icon svg {
-  margin-left: 750px; 
+  margin-left: 500px; 
 }
 
 /* Ensure the main content below TopNav does not overlap */
@@ -972,12 +989,6 @@ h4 {
   padding-left: 100%;
   animation: marquee 10s linear infinite;
 }
-
-@keyframes marquee {
-  0% { transform: translateX(100%); }
-  100% { transform: translateX(-100%); }
-}
-
 
 .charts-section {
   margin-top: 30px;
@@ -1145,6 +1156,6 @@ h4 {
 
 .justified-text {
   text-align: justify;
-  line-height: 1.5; /* Optional for better readability */
+  line-height: 1.5; 
   font-family: Arial, Helvetica, sans-serif;
 }

@@ -33,9 +33,9 @@ function Feedback() {
         <Sidenav />
       </Col>
       
-      {/* Main content with column size 10 */}
-      <Col sm={10} className="main-content-col">
-        <div className="feedback-container">
+      {/* Main content with column size 8 */}
+      <Col sm={8} className="main-content-col d-flex justify-content-end">
+        <div className="feedback-container" style={{ maxWidth: '600px', width: '100%', padding: '20px', textAlign: 'left', marginTop: '10px' }}>
           <h2>We value your feedback!</h2>
           {!formSubmitted ? (
             <form onSubmit={handleSubmit} className="feedback-form">

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, Form, Col, Row, Card } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
- 
+
 const CheckoutPage = () => {
   const [cartItems, setCartItems] = useState([]);
   const [formData, setFormData] = useState({
@@ -51,7 +51,7 @@ const CheckoutPage = () => {
   expectedDeliveryDate.setDate(expectedDeliveryDate.getDate() + 5); // 5 days from now
 
   return (
-    <div className="container mt-4">
+    <div className="container mt-4" style={{ paddingLeft: '15px' }}>
       <h2>Checkout</h2>
       <Row>
         <Col md={8}>

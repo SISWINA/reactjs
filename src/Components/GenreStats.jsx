@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 import { Pie, Bar } from 'react-chartjs-2';
 import axios from 'axios';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement } from 'chart.js';
@@ -51,28 +51,24 @@ const GenreStats = () => {
     fetchData();
   }, []);
 
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
   return (
     <Row>
       <Col sm={2} className="sidenav-col">
         <Sidenav />
       </Col>
-      <Col sm={10} className="main-content-col">
-        <div className="genre-stats-container">
-          <h2>Genre Statistics</h2>
+      <Col sm={8} className="main-content-col d-flex justify-content-end" style={{ marginLeft: '85px' }}>
+        <div className="genre-stats-container" style={{ padding: '1rem', maxWidth: '1000px', width: '100%', marginTop: '0px' }}>
+          <h2 className="text-center" style={{ marginBottom: '20px' }}>Genre Statistics</h2>
           <Row>
             <Col md={6} className="chart-container">
               <h3 style={{ marginBottom: '10px' }}>Book Distribution by Genre</h3>
-              <div style={{ position: 'relative', height: '300px' }}>
+              <div style={{ position: 'relative', height: '350px' }}>
                 <Pie data={genreData} options={{ responsive: true, maintainAspectRatio: false }} />
               </div>
             </Col>
             <Col md={6} className="chart-container">
               <h3 style={{ marginBottom: '10px' }}>Average Ratings by Genre</h3>
-              <div style={{ position: 'relative', height: '300px' }}>
+              <div style={{ position: 'relative', height: '350px' }}>
                 <Bar data={ratingData} options={{ responsive: true, maintainAspectRatio: false }} />
               </div>
             </Col>
