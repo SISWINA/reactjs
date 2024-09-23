@@ -971,24 +971,32 @@ h4 {
 
 
 .marquee-container {
-  background-color: #3c0085; 
-  padding: 10px;
-  cursor: pointer;
   overflow: hidden;
-  position: relative;
-  text-align: center;
+  white-space: nowrap;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background: #5a0ba9;
+  height: 50px; /* Set a height */
+  display: flex;
+  align-items: center; /* Center vertically */
 }
 
 .marquee-text {
-  display: inline-block;
-  white-space: nowrap;
-  font-size: 18px;
-  font-family: fantasy;
+  color: #ddd;
   font-weight: bold;
-  color: #ffffff;
-  padding-left: 100%;
-  animation: marquee 10s linear infinite;
+  display: inline-block;
+  padding-left: 100%; /* Start off-screen */
+  animation: marquee 10s linear infinite; /* Adjust duration as needed */
 }
+
+@keyframes marquee {
+  0% {
+      transform: translate(0);
+  }
+  100% {
+      transform: translate(-100%); /* Move completely off-screen */
+  }
+}
+
 
 .charts-section {
   margin-top: 30px;
