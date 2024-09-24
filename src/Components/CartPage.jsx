@@ -10,27 +10,31 @@ const CartPage = () => {
   useEffect(() => {
     const fetchCartItems = () => {
       const items = JSON.parse(localStorage.getItem('cartItems')) || [];
-      setCartItems(items); 
+      setCartItems(items);
     };
     fetchCartItems();
   }, []);
 
   const handleRemove = (id) => {
     const updatedCartItems = cartItems.filter(item => item.id !== id);
-    setCartItems(updatedCartItems); 
-    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems)); 
+    setCartItems(updatedCartItems);
+    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
   };
 
   const handleQuantityChange = (id, quantity) => {
-    const updatedCartItems = cartItems.map(item => 
+    const updatedCartItems = cartItems.map(item =>
       item.id === id ? { ...item, quantity: quantity } : item
     );
     setCartItems(updatedCartItems);
-    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems)); 
+    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
   };
 
+  // Calculate subtotal with discount for products with isDiscount set to true
   const calculateSubtotal = () => {
-    return cartItems.reduce((total, item) => total + item.price * item.quantity, 0);
+    return cartItems.reduce((total, item) => {
+      const price = item.isDiscount ? item.price * 0.7 : item.price; 
+      return total + price * item.quantity;
+    }, 0);
   };
 
   const scrollToTop = () => {
@@ -38,9 +42,8 @@ const CartPage = () => {
   };
 
   return (
-    <div className="container mt-4" style={{ paddingLeft: '15px' }}>
+    <div className="container mt-4" style={{ paddingsLeft: '15px', marginRight: '50px' }}>
       <Row>
-        {/* Cart Items Section */}
         <Col md={8}>
           <h2 className="mb-4">Shopping Cart</h2>
           <div className="cart-items">
@@ -48,15 +51,23 @@ const CartPage = () => {
               cartItems.map(item => (
                 <div key={item.id} className="cart-item mb-4 p-3 border-bottom">
                   <Row className="align-items-center">
-                    {/* Product Number */}
                     <Col xs={1} className="product-number">
                       <span>{cartItems.indexOf(item) + 1}</span>
                     </Col>
-
-                    {/* Product Details */}
                     <Col xs={8}>
                       <h5 className="product-name">{item.name}</h5>
-                      <p className="text-muted">Price: ₹{item.price}</p>
+                      <p className="text-muted">
+                        Price: 
+                        {item.isDiscount ? (
+                          <>
+                            <span style={{ textDecoration: 'line-through', color: 'red' }}>₹{item.price}</span> {' '}
+                            <span style={{ color: 'green' }}>₹{(item.price * 0.7).toFixed(2)}</span> {/* Apply 30% discount */}
+                          </>
+                        ) : (
+                          <>₹{item.price}</>
+                        )}
+                      </p>
+
                       <div className="quantity-controls d-flex">
                         <Button
                           variant="outline-secondary"
@@ -77,7 +88,6 @@ const CartPage = () => {
                       </div>
                     </Col>
 
-                    {/* Remove Button */}
                     <Col xs={3} className="text-md-right">
                       <Button variant="danger" className="remove-btn" onClick={() => handleRemove(item.id)}>
                         <FaTrashAlt /> Remove
@@ -92,12 +102,11 @@ const CartPage = () => {
           </div>
         </Col>
 
-        {/* Checkout Summary Section */}
         <Col md={4}>
           {cartItems.length > 0 && (
             <div className="cart-summary p-4 bg-light rounded">
               <h5>Order Summary</h5>
-              <p className="text-muted">Subtotal ({cartItems.length} items): ₹{calculateSubtotal()}</p>
+              <p className="text-muted">Subtotal ({cartItems.length} items): ₹{calculateSubtotal().toFixed(2)}</p>
               <Button as={Link} to="/checkout" variant="success" className="btn-block">
                 Proceed to Checkout
               </Button>
@@ -106,7 +115,6 @@ const CartPage = () => {
         </Col>
       </Row>
 
-      {/* Back to Top Button */}
       {cartItems.length > 0 && (
         <Button className="back-to-top" onClick={scrollToTop} variant="secondary" style={{ position: 'fixed', bottom: '20px', right: '20px' }}>
           <FaArrowUp size={20} />

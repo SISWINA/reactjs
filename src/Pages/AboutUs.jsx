@@ -10,7 +10,7 @@ function AboutUs() {
         <Col sm={2} className="sidenav-fixed">
           <Sidenav />
         </Col>
-        <Col sm={10} className="content"> {/* Removed offset for proper centering */}
+        <Col sm={10} className="content"> 
           <div className="about-content">
             <img src={dream} alt="About Us" className="about-image" />
             <div className="about-text">

@@ -35,7 +35,15 @@ function Feedback() {
       
       {/* Main content with column size 8 */}
       <Col sm={8} className="main-content-col d-flex justify-content-end">
-        <div className="feedback-container" style={{ maxWidth: '600px', width: '100%', padding: '20px', textAlign: 'left', marginTop: '10px' }}>
+        <div className="feedback-container" 
+             style={{ 
+               maxWidth: '600px', 
+               width: '100%', 
+               padding: '40px', 
+               textAlign: 'left', 
+               marginTop: '10px', 
+               marginRight: '100px' 
+             }}>
           <h2>We value your feedback!</h2>
           {!formSubmitted ? (
             <form onSubmit={handleSubmit} className="feedback-form">

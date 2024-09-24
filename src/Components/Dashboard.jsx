@@ -85,7 +85,7 @@ function Dashboard() {
             width={500}  // Decrease width
             height={250} // Decrease height
             data={websiteViewsData}
-            margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+            margin={{ top: 5, right: 30, left: 10, bottom: 5 }}
         >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="hour" />
@@ -96,8 +96,6 @@ function Dashboard() {
         </BarChart>
     </Col>
 </Row>
-
-
                     <div className="marquee-container" onClick={handleMarqueeClick}>
                         <div className="marquee-text">
                             MEGA-DISCOUNT ON THE BEST SELLERS OF THE YEAR

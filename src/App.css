@@ -568,6 +568,7 @@ body{
 }
 
 .about-content {
+  margin-top: 10px; 
   display: flex;
   align-items: center;
   justify-content: center;
@@ -973,19 +974,19 @@ h4 {
 .marquee-container {
   overflow: hidden;
   white-space: nowrap;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  background: #5a0ba9;
-  height: 50px; /* Set a height */
+  box-shadow: 0 2px 5px rgba(130, 39, 210, 0.752);
+  background: #40027e;
+  height: 40px; 
   display: flex;
-  align-items: center; /* Center vertically */
+  align-items: center; 
 }
 
 .marquee-text {
   color: #ddd;
   font-weight: bold;
   display: inline-block;
-  padding-left: 100%; /* Start off-screen */
-  animation: marquee 10s linear infinite; /* Adjust duration as needed */
+  padding-left: 100%; 
+  animation: marquee 10s linear infinite; 
 }
 
 @keyframes marquee {
